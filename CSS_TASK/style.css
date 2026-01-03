@@ -1,0 +1,133 @@
+        .main {
+
+            max-height: 100%;
+            max-width: 100%;
+            margin-top: 50px;
+            padding-left: 10%;
+            padding-right: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 10px;
+            padding: 10%;
+            height: 100%;
+            box-shadow: 5px 5px 10px #888888;
+            border-radius: 10px;
+        }
+
+        .subcontainer {
+            height: 100%;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+            padding-right: 20px;
+
+            box-shadow: 5px 5px 10px #888888;
+            border-radius: 10px;
+        }
+
+        .left {
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
+
+            border-radius: 12px;
+            background: linear-gradient(to bottom, #6343fd, #352dea);
+        }
+
+
+
+        .circle {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: none;
+            height: 150px;
+            width: 150px;
+            background: linear-gradient(to bottom, #4924cc, #4835df);
+            border-radius: 100%;
+
+        }
+
+        .right {
+            color: #000000;
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            text-align: center;
+            gap: 40px;
+            height: 100%;
+
+            border-radius: 12px;
+        }
+
+        .box {
+            color: black;
+            width: 100%;
+            padding-left: 4px;
+            padding-right: 4px;
+            height: 35px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            border-radius: 6px;
+        }
+
+        .second {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            gap: 10px;
+
+        }
+
+        .buttondiv {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button {
+            color: white;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+
+            background-color: #303c58;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid black;
+            justify-content: center;
+
+        }
+
+        button:hover {
+            background-color: #293249;
+        }

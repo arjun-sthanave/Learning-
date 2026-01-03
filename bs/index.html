@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preline Carousel Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 dark:bg-neutral-950 p-8">
+
+    <!-- Slider -->
+    <div data-hs-carousel='{
+        "loadingClasses": "opacity-0",
+        "isAutoPlay": true,
+        "speed": 5000,
+        "slidesQty": { "xs": 1, "lg": 3 }
+      }' class="relative">
+
+        <div class="hs-carousel w-full overflow-hidden bg-white rounded-xl dark:bg-neutral-900">
+            <div class="relative min-h-72 -mx-2">
+                <div
+                    class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 transition-transform duration-700">
+
+                    <!-- Slide 1 -->
+                    <div class="hs-carousel-slide px-2">
+                        <div
+                            class="flex justify-center items-center h-full bg-blue-100 p-6 rounded-lg dark:bg-blue-900/20">
+                            <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="hs-carousel-slide px-2">
+                        <div
+                            class="flex justify-center items-center h-full bg-red-100 p-6 rounded-lg dark:bg-red-900/20">
+                            <span class="text-2xl font-bold text-red-600 dark:text-red-400">2</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="hs-carousel-slide px-2">
+                        <div
+                            class="flex justify-center items-center h-full bg-green-100 p-6 rounded-lg dark:bg-green-900/20">
+                            <span class="text-2xl font-bold text-green-600 dark:text-green-400">3</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="hs-carousel-slide px-2">
+                        <div
+                            class="flex justify-center items-center h-full bg-yellow-100 p-6 rounded-lg dark:bg-yellow-900/20">
+                            <span class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <button type="button"
+            class="hs-carousel-prev hs-carousel-disabled:opacity-50 absolute inset-y-0 start-0 inline-flex justify-center items-center w-12 h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none rounded-s-lg dark:text-white">
+            <svg class="size-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="m15 18-6-6 6-6" />
+            </svg>
+        </button>
+
+        <button type="button"
+            class="hs-carousel-next hs-carousel-disabled:opacity-50 absolute inset-y-0 end-0 inline-flex justify-center items-center w-12 h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none rounded-e-lg dark:text-white">
+            <svg class="size-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="m9 18 6-6 6-6" />
+            </svg>
+        </button>
+
+        <!-- Pagination -->
+        <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+            <!-- Preline injects dots here automatically if classes are provided in data-hs-carousel -->
+        </div>
+    </div>
+
+    <!-- REQUIRED: Correct Preline JS Path -->
+    <script src="cdn.jsdelivr.net"></script>
+</body>
+
+</html>

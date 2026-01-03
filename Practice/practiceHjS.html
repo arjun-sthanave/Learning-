@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS_TASK2/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+    <style>
+        #container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+        }
+
+        #circle {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 100%;
+
+        }
+    </style>
+</head>
+
+<body style="width: 100%;">
+    <script>
+
+        function handleButton(flag) {
+            if (!flag) {
+                document.getElementById("circle").style.backgroundColor = "yellow"
+            }
+            else
+                document.getElementById("circle").style.backgroundColor = "white"
+        }
+    </script>
+    <h1>LIGHT PROJECT</h1>
+    <div id="container">
+        <div id="circle"></div>
+        <div id="buttons">
+            <button id="on" onclick="handleButton(false)">on</button>
+            <button id="off" onclick="handleButton(true)">off</button>
+        </div>
+    </div>
+</body>
+
+</html>

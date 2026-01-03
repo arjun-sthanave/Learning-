@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+
+            height: 100%;
+            max-width: 100%;
+            padding: 40px;
+
+
+        }
+
+        .container {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 5px 5px 10px #888888;
+            border-radius: 10px;
+        }
+
+        #form {
+            width: 100%;
+            align-items: start;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .formcontent {
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+        }
+
+        .subcontainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+
+
+            height: 100vh;
+
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .input {
+            height: 30px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .input:focus {
+            text-align: none;
+            outline: none;
+        }
+
+        .labels {
+            font-size: large;
+            font-weight: 500;
+        }
+
+        #textarea {
+            width: 100%;
+            height: 60px;
+            border: none;
+        }
+
+        #select {
+            width: 100%;
+            height: 30px;
+            border: none;
+        }
+
+        .button {
+            height: 50px;
+            padding: 8px;
+        }
+
+        .inputdiv {
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            border-color: rgb(214, 214, 214);
+            ;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+
+
+<body class="main">
+    <div class="container">
+        <h1 class="">Company details Form</h1>
+        <div class="subcontainer">
+            <form id="form" action="companyProfile.html">
+                <div class="formcontent" style="width: 100%;">
+
+                    <div class="details">
+                        <label class="labels" for="">Company Name:</label>
+                        <div class="inputdiv">
+                            <input class="input" type="text" placeholder="ABC tech Company">
+                        </div>
+                    </div>
+
+                    <label class="labels" for="">Tagline:</label>
+                    <div class="inputdiv"><input class="input" type="text"
+                            placeholder="We build Modern  and scalable Solutions" required></div>
+
+                    <label class="labels" for="">About Company:</label>
+                    <div class="inputdiv">
+                        <textarea name="" id="textarea"
+                            placeholder="ABC  tech is  a Software Development and scalable  Web Solutions"></textarea>
+                    </div>
+                    <label class="labels" for="">Services:</label>
+                    <div class="inputdiv">
+                        <select name="" id="select" aria-required="true">
+                            <option value="">Web Development</option>
+                            <option value="">App Development</option>
+                        </select>
+                    </div>
+                    <label class="labels" for="">Team Size</label>
+                    <div class="inputdiv">
+                        <input class="input" type="text" placeholder="50">
+                    </div>
+
+                </div>
+                <button type="submit" class="link">
+
+                    Preview Company Profile
+
+
+        </div>
+
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

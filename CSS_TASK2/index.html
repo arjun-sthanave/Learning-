@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: "Montserrat", sans-serif;
+
+
+    }
+</style>
+
+<body class="">
+    <div
+        class="container1 lg:bg-cover  bg-center   h-1/2 lg:h-screen   flex  flex-col items-start justify-center max-w-full rounded-base">
+        <nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default bg-white ">
+            <div
+                class="w-screen flex flex-wrap items-center md:justify-between justify-between lg:justify-around mx-auto py-4 px-3">
+                <a href="#main" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class=""><i class="fa fa-eercast " aria-hidden="true"></i></div>
+                    <span class="self-center text-xl text-heading font-semibold whitespace-nowrap ">Consuloan</span>
+                </a>
+                <div class="flex gap-3 items-center">
+                    <div class="list3 lg:hidden">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                    <button data-bs-target="#navbar-default" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-base md:hidden hover:bg-neutral-secondary-soft focus:outline-none focus:ring-2 focus:ring-neutral-tertiary text-black border border-black"
+                        aria-controls="navbar-default" aria-expanded="false" onclick="toggleMenu()">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="hidden  w-full  lg:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="font-medium flex flex-col p-4 lg:visible md:p-0 mt-4  rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
+
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Home</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Services</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Pages</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Project</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">News</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">shop</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Contacts</a>
+                        </li>
+                        <div class="list3 lg:visible  collapse ">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </div>
+
+                    </ul>
+                </div>
+                <script>
+                    function toggleMenu() {
+                        const menu = document.getElementById('navbar-default');
+                        menu.classList.toggle('hidden');
+                    }
+                </script>
+            </div>
+        </nav>
+
+        <div class=" w-full lg:w-1/2  flex flex-col items-start  lg:items-center  gap-lg
+    
+
+  ">
+            <div class="w-sm-100 w-100 flex flex-col gap-4 ml-9  lg:ml-10 mt-14 lg:mt-0">
+
+                <div class="items-end text-2xl lg:text-6xl font-semibold   w-full text-[#d45e5a]">
+                    <span class=" " style="color: #1a2a43;">SAVE</span> TIME <br> <span
+                        style="color: #1a2a43;">SAVE</span>
+                    MONEY
+                    <br>
+                    GROW & SUCEED
+                </div>
+                <div class="flex  items-start w-full lg:w-3/4 gap-5">
+                    <button class="redbutton w-full text-xs lg:text-lg bg-[#d45e5a] text-white  " type="button">Our
+                        Services</button>
+                    <button class="bluebutton w-full text-xs lg:text-lg bg-[#1a2a43] text-white" type="button">Our
+                        Company</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="w-full  flex flex-col lg:flex-row justify-center gap-5  lg:py-5 py-2 lg:px-5 px-3 ">
+        <div class="subcontainerleft">
+            <img src="business.webp" style="height: 100%; width: 100%;">
+        </div>
+        <div class="w-full lg:w-1/2 flex flex-col lg:justify-around gap-2 lg:gap-3 ">
+            <div class=" w-3/4 text-3xl lg:text-4xl font-semibold text-[#1a2a43]"><span style="color: #d45e5a;">30
+                    Years</span>
+                Of
+                Successfull
+                Bussiness Consulting</div>
+            <div class="" style="color: rgb(156, 156, 156); font-size: x-small;">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae enim ducimus obcaecati suscipit
+                    laudantium cumque illum, quia itaque ab ut. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Unde, facilis!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni modi qui consectetur dicta, inventore
+                    sit? Consequuntur minus veritatis nobis tenetur unde amet placeat. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Est porro perferendis pariatur?</p>
+            </div>
+            <div class=" flex gap-5 w-full  text-center justify-center lg:justify-start items-center">
+                <button class="redbutton w-1/2 lg:w-1/4  bg-[#d45e5a] text-white  " type="button">Our Services</button>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container3 lg:w-full lg:h-[60%] lg:my-0 py-5 flex flex-col justify-center items-center gap-5 ">
+        <div class="text-3xl font-semibold text-white lg:mt-0  md:mt-7">Our Industry
+        </div>
+        <div class="" style="width: 30px; border: 1px solid #d45e5a;"></div>
+
+        <div class="flex flex-col lg:flex-row justify-start lg:justify-center  w-full lg:h-[300px]  lg:gap-0 gap-4 p-4">
+
+
+            <div
+                class="flex flex-col items-center justify-center bg-white w-full lg:w-1/3 p-6 shadow-sm border border-gray-100 rounded-sm">
+                <i class="fa fa-hospital-o text-3xl lg:text-4xl text-[#d45e5a] mb-4"></i>
+                <h3 class="text-lg lg:text-xl font-medium text-[#1a2a43] text-center mb-2">Property Management</h3>
+                <p class="text-xs lg:text-sm text-gray-500 text-center leading-relaxed">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam aliquam enim inventore consectetur.
+                </p>
+            </div>
+
+            <div
+                class="flex flex-col items-center justify-center bg-[#1a2a43] w-full lg:w-1/3 p-6 shadow-md rounded-sm">
+                <i class="fa fa-book text-3xl lg:text-4xl text-[#d45e5a] mb-4"></i>
+                <h3 class="text-lg lg:text-xl font-medium text-white text-center mb-2">Property Management</h3>
+                <p class="text-xs lg:text-sm text-gray-300 text-center leading-relaxed">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam aliquam enim inventore consectetur.
+                </p>
+            </div>
+
+
+            <div
+                class="flex flex-col items-center justify-center bg-white w-full lg:w-1/3 p-6 shadow-sm border border-gray-100 rounded-sm">
+                <i class="fa fa-pie-chart text-3xl lg:text-4xl text-[#d45e5a] mb-4"></i>
+                <h3 class="text-lg lg:text-xl font-medium text-[#1a2a43] text-center mb-2">Property Management</h3>
+                <p class="text-xs lg:text-sm text-gray-500 text-center leading-relaxed">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam aliquam enim inventore consectetur.
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="container4 w-full flex flex-col items-center justify-center ">
+
+        <div class=" w-full flex flex-col items-center justify-around lg:gap-6 gap- mb-10">
+            <div class="text-5xl lg:text-7xl text-[#d45e5a] mt-8">“
+            </div>
+            <div class="text-2xl " style="font-size: xx-large; color: #1a2a43; font-weight: 600; ">2000+ Happy Client
+            </div>
+            <div class="" style="width: 60%; text-align: center; color: rgb(136, 136, 136)">Lorem ipsum dolor sit amet
+                consectetur adipisicing
+                elit.
+                Deleniti incidunt
+                possimus aliquid
+                doloribus, exercitationem consectetur reiciendis repudiandae aspernatur eum ipsa voluptas! Lorem ipsum
+                dolor, sit amet consectetur adipisicing elit. Aut dicta fuga asperiores. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Nulla, neque! </div>
+            <div class="images">
+                <div class=""
+                    style="width: 100%  ; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 8px;">
+                    <img src="people1.jpg" alt="">
+                    <img src="people2.jpg" style="width: 80px;
+    height: 80px;
+    border-radius: 100%;" alt="">
+                    <img src="people3.avif" alt="">
+                </div>
+                <div class="alex">
+                    <div class="" style=" font-size: x-large; color: #1a2a43;"><b>Alex People</b></div>
+                    <div class="" style="color: gold;">*****</div>
+                    <div class="" style="font-size: x-small;  color: rgb(94, 94, 94);">CEO DevExecutive</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container5 flex flex-col items-center gap-6 pt-12">
+        <div class="" style="font-size: xx-large; font-weight: 600; color:  white;">Our Pricing</div>
+        <div class="" style="width: 30px; border: 1px solid #d45e5a;"></div>
+
+        <div class="box2 rounded-lg flex lg:flex-row flex-col items-center gap-5 mb-5">
+            <div class="item1 h-full w-full flex flex-col items-center gap-3 lg:gap-10 pt-5 pl-4 pb-5 lg:pb-4 pr-4  rounded-lg"
+                style="background-color: white; color: white;">
+                <div
+                    style="  font-size: x-large; color: #1a2a43; width: 100%; display: flex; flex-direction: column ; align-items: center; ">
+                    <div class="lg:font-semibold  text-xl lg:text-2xl">Starter Plan</div>
+                    <div class=""
+                        style="width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                        <div class=""
+                            style="height: 100%; color: #d45e5a;  width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                            <div class=""
+                                style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: start;">
+                                $</div>
+                            <div class=""
+                                style=" font-weight: 600; font-size: 50px; height: 100%; display: flex; flex-direction: row; align-items: end; justify-content: end; overflow: hidden;">
+                                35</div>
+                            <div class=""
+                                style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: end;">
+                                /month</div>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="width: 50%; font-size:small; text-align: center;color: rgb(190, 187, 187);  line-height: 25px;  ">
+                    Lorem ipsum dolor
+                    sit, amet
+                    consectetur adipisicing
+                    elit. Quam aliquam
+                    enim inventore consectetur
+                    Lorem ipsum dolor sit.
+                </div>
+                <div class="w-full flex flex-row items-center justify-center text-sm lg:text-mds">
+
+                    <button style="width: 50%;" class="bluebutton">SELECT PLAN</button>
+                </div>
+            </div>
+            <div class="item1  h-full w-full flex flex-col items-center gap-3  lg:gap-10 pt-5 pl-4 pb-5 lg:pb-4 pr-4 rounded-lg"
+                style="background-color: white; color: white;">
+                <div
+                    style="  font-size: x-large; color: #1a2a43; width: 100%; display: flex; flex-direction: column ; align-items: center; ">
+                    <div class="" style="font-weight: 600;">Silver Plan</div>
+                    <div class=""
+                        style="width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                        <div class=""
+                            style="height: 100%; color: #d45e5a;  width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                            <div class=""
+                                style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: start;">
+                                $</div>
+                            <div class=""
+                                style=" font-weight: 600; font-size: 50px; height: 100%; display: flex; flex-direction: row; align-items: end; justify-content: end; overflow: hidden;">
+                                65
+                                <div class=""
+                                    style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: end;">
+                                    /month</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="width: 50%; font-size:small; text-align: center; color: rgb(190, 187, 187);  line-height: 25px; ">
+                    Lorem ipsum dolor
+                    sit, amet
+                    consectetur adipisicing
+                    elit. Quam aliquam
+                    enim inventore consectetur
+                    Lorem ipsum dolor sit.
+                </div>
+                <div class="w-full flex flex-row items-center justify-center text-sm lg:text-mds">
+
+                    <button style="width: 50%;" class="redbutton">SELECT PLAN</button>
+                </div>
+            </div>
+            <div class="   h-full w-full flex flex-col items-center gap-3 lg:gap-10 pt-5 pl-4 pb-5 lg:pb-4 pr-4 rounded-lg"
+                style="background-color: white; color: white;">
+                <div
+                    style="  font-size: x-large; color: #1a2a43; width: 100%; display: flex; flex-direction: column ; align-items: center; ">
+                    <div class="" style="font-weight: 600;">Gold Plan</div>
+                    <div class=""
+                        style="width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                        <div class=""
+                            style="height: 100%; color: #d45e5a;  width: 100%; display: flex ; flex-direction: row; align-items: center; justify-content: center;">
+                            <div class=""
+                                style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: start;">
+                                $</div>
+                            <div class=""
+                                style=" font-weight: 600; font-size: 50px; height: 100%; display: flex; flex-direction: row; align-items: end; justify-content: end; overflow: hidden;">
+                                95
+                                <div class=""
+                                    style="font-size: small; height: 100%; display: flex; flex-direction: column; align-items: end; justify-content: end;">
+                                    /month</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                    style="width: 50%; font-size:small; text-align: center;color: rgb(190, 187, 187);  line-height: 25px;  ">
+                    Lorem ipsum dolor
+                    sit, amet
+                    consectetur adipisicing
+                    elit. Quam aliquam
+                    enim inventore consectetur
+                    Lorem ipsum dolor sit.
+                </div>
+                <div class="w-full flex flex-row items-center justify-center text-sm lg:text-mds">
+
+                    <button style="width: 50%;" class="bluebutton">SELECT PLAN</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="container6 mb-0 mb-14">
+        <div class="up text-3xl lg:text-5xl font-semibold text-[#1a2a43] ">
+            Latest News
+        </div>
+
+
+        <div class="w-full h-1/2 flex lg:flex-row flex-col  gap-10 items-center">
+            <div class="w-full lg:w-1/2 h-full flex  flex-row items-center justify-center lg:justify-end gap-5">
+
+                <img src="disc.jpg" class="w-1/3 h-full" alt="">
+
+                <div class="h-full w-1/3 flex flex-col lg:gap-7 gap-2  text-[#d45e5a]">
+                    <div class="text-xs lg:text-lg w-full text-[#d45e5a] ">Advisory Plan</div>
+                    <div class="text-xs lg:text-lg w-full text-[#1a2a43] font-semibold">Colombia
+                        Gets a Bussinesss
+                        Makeover </div>
+                    <div class="text-sm">Are you Sure </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 h-full flex  flex-row items-center justify-center lg:justify-start gap-5  ">
+
+                <img src="dscussion.jpg" class="w-1/3 h-full" alt="">
+
+                <div class="h-full w-1/3 flex flex-col lg:gap-7 gap-1  text-[#d45e5a]">
+                    <div class="text-nowrap  text-xs lg:text-lg w-full text-[#d45e5a] ">Finance and Accounting</div>
+                    <div class="text-xs lg:text-lg w-full text-[#1a2a43] font-semibold">The
+                        Recurring Debate Over
+                        Concurrent Delays
+                    </div>
+                    <div class="text-sm">Are you Sure </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container7 " style="color: white;">
+        <div class="head">
+            <div class=""><i class="fa fa-eercast" aria-hidden="true"></i></div>
+            <div class="text-lg lg:text-xl" style=" font-weight: 600; font-family: cursive">
+                Click on the Image to download</div>
+        </div>
+
+        <div
+            class="w-full flex  lg:flex-row flex-col items-center lg:items-center justify-around lg:pl-0 pl-5 lg:pt-0 pt-5 gap-5 lg:px-5 lg:gap-5">
+            <div
+                class="lg:w-1/5 w-full flex flex-col justify-center lg:pl-10 pl-0   gap-5 lg:mt-7 mt-0 color-[#888888]">
+                <div class="" style="width: 100%; display: flex; flex-direction: row; align-items: center;  gap: 4px;">
+                    <i class="fa fa-eercast" aria-hidden="true"></i>
+                    <h1 style="color: white;">Consuloan</h1>
+                </div>
+                <div class="  w-full text-sm lg:pl-5 " style=" line-height: 24px;">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+
+                </div>
+                <div class=""
+                    style="width: 100%; display: flex; flex-direction: column; align-items: start; gap: 14px    ;">
+                    <div class=""
+                        style="width: 100%; display: flex; flex-direction: row;  align-items: start; gap: 8px;">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <div class="" style="font-size: small;"> 882345667573</div>
+                    </div>
+                    <div class=""
+                        style="width: 100%; display: flex; flex-direction: row; align-items: start; gap: 8px;">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div class="" style="font-size: small;">Nehru nager Durg.</div>
+                    </div>
+                    <div class=""
+                        style="width: 100%; display: flex; flex-direction: row; align-items: start; gap: 8px;">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <div class="" style="font-size: small;"> soni@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="w-full lg:w-1/3 flex lg:justify-around justify-between   gap-20 pr-12 lg:pr-12 pt-5   items-center">
+                <div class="w-1/5 flex flex-col justify-end lg:gap-5 gap-1 lg:mt-7 mt-0 color-[ #888888] ">
+                    <h2 style="color: white;">Our Link</h2>
+                    <div class="flex flex-col lg:gap-3 gap-3 " style="height: 100%;">
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Industry</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li class="text-nowrap">About Us</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Services</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Contacts</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Details</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/5 flex flex-col lg:gap-[20px] gap-1 items-center color-[#888888]  ">
+                    <h2 class="lg:visible hidden" style="    color: #141e30;">Our Link</h2>
+
+                    <div class="flex flex-col lg:gap-2 gap-1 " style="height: 100%;">
+                        <div class="collapse" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Network</li>
+                        </div>
+                        <div class="flex items-center gap-1 " style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Network</li>
+                        </div>
+
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Support</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Career</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>Culture</li>
+                        </div>
+                        <div class="flex items-center gap-1" style="display: flex; gap: 12px;">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                            <li>News</li>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div
+                class="lg:w-1/4 w-full flex flex-col justify-start lg:gap-5 gap-2 lg:mt-7 mt-0 text-[ #888888] color-[#888888] ">
+                <h2 class="text-nowrap lg:text-start text-start" style="color: white;">Reactive News</h1>
+                    <div class=" lg:text-start ">Colombia gets a business Makeover</div>
+                    <div class="w-full flex flex-row gap-3  lg:justify-start items-center ">
+                        <i class="fa fa-globe  lg:text-start text-center" aria-hidden="true"></i>
+                        <div class=" lg:text-start text-center">India</div>
+                    </div>
+                    <div class="w-full  lg:text-start ">Colombia gets a business Makeover</div>
+                    <div class="w-full flex flex-row gap-3 lg:justify-start  items-center  lg:text-start">
+                        <i class="fa fa-lock  lg:text-start " aria-hidden="true"></i>
+                        <div class=" lg:text-start ">Admin</div>
+                    </div>
+
+            </div>
+            <form action="" target="_blank"
+                class="lg:w-1/4 w-full flex flex-col justify-center gap-5 lg:mt-7 mt-0 text-[ #888888] color-[#888888] ">
+                <h2 class="" style="color: white;">NewsLetter</h2>
+                <div class="" style="color: rgb(121, 121, 121);">Loremlit. Amet, quaerat temporibus, saepe sint
+
+                    cum quos!</div>
+
+                <div
+                    class="h-1/3  w-3/2 lg:w-full flex lg:flex-col flex-row items-center gap-3 lg:pb-0 pb-4 lg:pr-0 pr-4 ">
+
+                    <div
+                        class=" h-1/2 w-1/2 lg:w-full  rounded-sm bg-[#29354b] flex flex-row justify-center items-center px-3">
+
+                        <input
+                            class="bg-transparent w-1/2 lg:w-full lg:h-[30px] h-[40px] outline-none placeholder:text-[9px] lg:placeholder:text-sm text-center"
+                            type="text" name="" id="" placeholder="Enter Your Email">
+
+                    </div>
+                    <button class="redbutton w-1/2 lg:w-full   text-xs lg:text-lg  text-white  " type="button">Our
+                        Company</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>
