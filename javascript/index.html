@@ -19,11 +19,12 @@
         <div class="container h-3/4 border border-black flex">
             <div class="w-[70%]  px-6 py-10 gap-10 flex flex-col items-start border-r border-black">
                 <h1>TODO LIST</h1>
+                <i id="trash" class="  fa fa-trash cursor-pointer " style="color:red" data-user="${index}"></i>
 
 
                 <div
                     class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-                    <table class="w-full text-sm text-left rtl:text-right text-body">
+                    <table class="table-fixed  w-full text-sm text-left rtl:text-right text-body">
                         <thead class="bg-neutral-secondary-soft border-b border-default">
                             <tr>
                                 <th scope="col" class="px-6 py-3 font-medium">
@@ -36,7 +37,7 @@
                                     Description
                                 </th>
 
-                                <th scope="col" class="px-6 py-3 font-medium">
+                                <th scope="" colspan="2" class="px-6 py-3 font-medium text-center">
                                     Action
                                 </th>
                             </tr>
@@ -56,7 +57,7 @@
                         <label for="text" class="block mb-2.5 text-sm font-medium text-heading">Title</label>
                         <input type="text" id="title"
                             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-                            placeholder="" required />
+                            placeholder="Give the title...." required />
                     </div>
                     <div class="mb-5">
                         <label for="message" class="block mb-2.5 text-sm font-medium text-heading">Description</label>
@@ -65,11 +66,13 @@
                             placeholder="Write your thoughts here..."></textarea>
                     </div>
 
-                    <div id="SubmitButton" class="w-full flex justify-around">
-                        <input onclick="" id="submit" type="submit"
-                            class="text-white rounded-sm bg-black box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"></button>
+                    <div class="w-full flex justify-around">
+                        <input id="SubmitButton" type="submit"
+                            class="text-white cursor-pointer rounded-sm bg-green-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        <input id="changeButton" type="submit"
+                            class="hidden text-white cursor-pointer rounded-sm bg-red-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
                         <input type="reset"
-                            class="text-white rounded-sm bg-black box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"></button>
+                            class="text-white cursor-pointer rounded-sm bg-blue-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
 
                     </div>
 
