@@ -23,7 +23,7 @@ var data = JSON.parse(localStorage.getItem('userData')) || [];
 const tableBody = document.querySelector('#table');
 
 function renderTable() {
-    tableBody.innerHTML = data.map((items, index) => `
+    tableBody.innerHTML = data.reverse().map((items, index) => `
         <tr class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default max-w-[100px]">
             <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-wrap align-top">${index + 1}</th>
             <td class="px-6 py-4 border p-2 break-words align-top text-wrap">${items.title}</td>
@@ -53,7 +53,7 @@ SubBtn.addEventListener('click', (event) => {
     let formTitle = document.getElementById('title')
     let formDescription = document.getElementById('description')
     var userData = {
-        id: data.length + 1,
+        id: Date.now(),
         title: formTitle.value,
         description: formDescription.value,
         isChecked: false,
@@ -73,7 +73,7 @@ SubBtn.addEventListener('click', (event) => {
         formTitle.value = "";
         formDescription.value = "";
 
-        Swal.fire({ title: "Good job!", text: "DATA SUCCESSFULLY INSERTED!", icon: "success" });
+        Swal.fire({ title: "Good job!", text: "DATA ADDED SUCCESSFULLY", icon: "success" });
     } else {
         Swal.fire({ title: "Failed!", text: "Please fill in all fields!", icon: "error" });
     }
@@ -116,6 +116,7 @@ function deleteItem(e) {
 
 
 function toggleCheck(e) {
+    document.getElementById('trash').style.display = "block"
     console.log(e.getAttribute('data-id'));
     var idx = e.getAttribute('data-id')
     console.log(idx);
@@ -136,6 +137,15 @@ function toggleCheck(e) {
         localStorage.setItem('userData', JSON.stringify(data));
 
     }
+
+
+    const selectId = data.filter(items => items.isChecked).map(item => item.id)
+    console.log("select", selectId);
+
+    if (selectId.length === 0) {
+        trash.style.display = "none"
+    }
+
     console.log("check", data[idx].isChecked);
     console.log("data", data);
 
@@ -167,14 +177,23 @@ function changeData(e) {
         changBtn.addEventListener("click", (e) => {
 
             console.log("idx", idx);
-            console.log();
-            console.log();
+
             data[idx].title = formTitle.value
 
             data[idx].description = formDescription.value
-            localStorage.setItem('userData', JSON.stringify(data));
-            data[idx].isToggle = false
-            renderTable()
+
+
+            if (data[idx].title.trim().length === 0 ||
+                data[idx].description.trim().length === 0) {
+                return false;
+            }
+            else {
+                localStorage.setItem('userData', JSON.stringify(data));
+                data[idx].isToggle = false
+                renderTable()
+            }
+
+
         })
 
 
@@ -216,19 +235,49 @@ function changeData1(e) {
 const DeleteAllBtn = document.getElementById('trash')
 DeleteAllBtn.addEventListener("click", () => {
     multipleDelte()
+
 })
 
 function multipleDelte() {
-    var selectAll = []
-    console.log("data:", data);
-    data.map((items, index) => {
+    const selectId = data.filter(items => items.isChecked).map(item => item.id)
+    console.log("selectAll", selectId.length);
+    if (selectId.length == 0) {
+        Swal.fire("FIRST SELECT ");
+    }
+    else {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                data = data.filter(item => !selectId.includes(item.id));
+                console.log("data", data);
 
-        if (items.isChecked == true) {
-            selectAll.push(items.id - 1)
-        }
 
-    })
-    console.log("selectAll", selectAll);
+                localStorage.setItem('userData', JSON.stringify(data));
+                renderTable()
+
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your data has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
+}
+
+const removeallData = document.querySelector(".removeALL")
+console.log(removeallData);
+
+removeallData.addEventListener("click", () => {
 
     Swal.fire({
         title: "Are you sure?",
@@ -240,20 +289,30 @@ function multipleDelte() {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
-            for (let i = 0; i < selectAll.length; i++) {
-                data.splice(selectAll[i], 1)
-                localStorage.setItem('userData', JSON.stringify(data));
-                renderTable();
-            }
-
-
-
             Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
                 icon: "success"
             });
+            localStorage.clear()
+            data = []
+            renderTable()
         }
     });
 
-}
+
+
+
+
+
+
+})
+
+const resetbtn = document.getElementById('resetButton')
+resetbtn.addEventListener('click', () => {
+    document.getElementById("SubmitButton").style.display = "block";
+    document.getElementById("changeButton").style.display = "none";
+})
+
+const trash = document.getElementById('trash')
+trash.style.display = "none"
