@@ -23,7 +23,7 @@ var data = JSON.parse(localStorage.getItem('userData')) || [];
 const tableBody = document.querySelector('#table');
 
 function renderTable() {
-    tableBody.innerHTML = data.reverse().map((items, index) => `
+    tableBody.innerHTML = data.map((items, index) => `
         <tr class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default max-w-[100px]">
             <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-wrap align-top">${index + 1}</th>
             <td class="px-6 py-4 border p-2 break-words align-top text-wrap">${items.title}</td>
@@ -66,7 +66,7 @@ SubBtn.addEventListener('click', (event) => {
     if (formValidation(userData)) {
 
 
-        data.push(userData);
+        data.unshift(userData);
         localStorage.setItem('userData', JSON.stringify(data));
         renderTable();
 
@@ -297,6 +297,7 @@ removeallData.addEventListener("click", () => {
             localStorage.clear()
             data = []
             renderTable()
+            document.getElementById('trash').style.display = "none"
         }
     });
 
