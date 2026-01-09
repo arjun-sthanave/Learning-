@@ -6,12 +6,12 @@ function getNumber(number) {
     currentValue += number
     console.log("number", currentValue);
 
-    document.getElementById('display').placeholder = `${previuosValue} ${currentOperator} ${currentValue}`
+    document.getElementById('display').placeholder = ` ${previuosValue}  ${currentOperator} ${currentValue} `
 }
 
 function getOperator(operator) {
     if (currentValue == '') {
-        currentOperator = ''
+        return
     }
     if (previuosValue != '') {
         calculate()
@@ -48,8 +48,8 @@ function calculate() {
         return
     }
     let result
-    let curValue = parseInt(currentValue)
-    let preValue = parseInt(previuosValue)
+    let curValue = parseFloat(currentValue)
+    let preValue = parseFloat(previuosValue)
     console.log("cur", curValue);
     console.log("cur", preValue);
 
@@ -57,29 +57,29 @@ function calculate() {
 
     switch (currentOperator) {
         case '*':
-            result = curValue * preValue
+            result = preValue * curValue
             break
 
         case '+':
-            result = curValue + preValue
+            result = preValue + curValue
             break
 
         case '-':
-            result = curValue - preValue
+            result = preValue - curValue
             break
 
         case '/':
-            result = Math.floor(curValue * preValue)
+            result = Math.floor(preValue / curValue)
             break
         default:
             break
 
     }
-    previuosValue = result.toString()
-    console.log("result", previuosValue);
+    currentValue = result.toString()
 
-    currentValue = ''
+
+    previuosValue = ''
     currentOperator = ''
-    document.getElementById('display').placeholder = ` ${previuosValue} ${currentOperator}`;
+    document.getElementById('display').placeholder = `${currentValue}`;
 
 }
