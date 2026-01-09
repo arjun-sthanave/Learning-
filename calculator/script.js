@@ -85,6 +85,11 @@ function calculate() {
             break
 
         case '/':
+            if (curValue === 0) {
+                alert("Cannot divide by zero");
+
+                return;
+            }
             result = Math.floor(preValue / curValue)
 
             break
