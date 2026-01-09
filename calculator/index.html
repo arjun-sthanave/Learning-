@@ -17,7 +17,8 @@
                 placeholder="0" disabled>
 
             <div class="buttons w-full grid grid-cols-4 gap-3">
-                <button class="col-span-1 bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg">C</button>
+                <button id="cancel" onclick="clear()"
+                    class="col-span-1 bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg">C</button>
                 <button onclick="getOperator('/')"
                     class="button  bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg">/</button>
                 <button onclick="getOperator('*')"
@@ -40,7 +41,8 @@
                     class="button bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg">5</button>
                 <button onclick="getNumber('6')"
                     class="button bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg">6</button>
-                <button class="button bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg">=</button>
+                <button onclick="calculate()"
+                    class="button bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-lg">=</button>
 
                 <button onclick="getNumber('1')"
                     class="button bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg">1</button>

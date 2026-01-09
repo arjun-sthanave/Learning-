@@ -17,6 +17,8 @@ function getOperator(operator) {
         calculate()
     }
     currentOperator = operator
+    console.log("current opertor", currentOperator);
+
 
     previuosValue = currentValue
     currentValue = ''
@@ -25,17 +27,31 @@ function getOperator(operator) {
 }
 
 window.addEventListener('keydown', (event) => {
-    console.log("event", event.key);
-    if (event.key >= 0 && event.key <= 10) {
-        getNumber(event.key)
+    const key = event.key
+    if (key >= 0 && key < 10) {
+        getNumber(key)
     }
-    if (event.key == 'Escape') {
+    if (key == 'Escape') {
         clear()
 
     }
+
+    if (key == '+' || key == '-' || key == '/' || key == '*' || key == '=' || key == 'Enter') {
+        if (key == '=' || key == 'Enter') {
+            calculate()
+        } else {
+            getOperator(key)
+        }
+    }
 })
 
+
+const canBtn = document.getElementById('cancel')
+canBtn.addEventListener('click', clear)
+
 function clear() {
+    console.log("data cleared");
+
     currentValue = ''
     currentOperator = ''
     previuosValue = ''
@@ -70,6 +86,7 @@ function calculate() {
 
         case '/':
             result = Math.floor(preValue / curValue)
+
             break
         default:
             break
