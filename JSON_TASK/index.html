@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.6/css/dataTables.dataTables.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex gap-3 mt-6 items-center justify-center">
+
+
+        <input data-name="firstname" type="text" class="border p-2 border-black " placeholder="enter the name" name=""
+            id="name">
+
+
+
+
+        <input data-name="order" type="text" class="border p-2 border-black " placeholder="enter the order" name=""
+            id="order">
+
+
+
+        <div class="flex gap-3">
+
+
+
+            <div id="min" class="">
+                <input type="number" class="border p-2 border-black " placeholder="enter the Min price" name="" id="">
+            </div>
+            <div id="max" class="">
+                <input type="number" class="border p-2 border-black " placeholder="enter the Max price" name="" id="">
+            </div>
+            <button id="search">search</button>
+        </div>
+
+
+
+
+
+    </div>
+    <table id="example" class="display">
+        <thead>
+            <tr>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>order_number</th>
+                <th>total</th>
+                <th>status</th>
+                <th>payment_status</th>
+                <th>source</th>
+                <th>customer code</th>
+                <th>Mobile No.</th>
+
+            </tr>
+        </thead>
+
+    </table>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.3.6/js/dataTables.js"></script>
+<script src="dt.js"></script>
