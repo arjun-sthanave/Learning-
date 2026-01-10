@@ -1,9 +1,14 @@
 var nameInput = document.getElementById('name');
 var orderInput = document.getElementById('order');
 
-let nameFilter = '';
-let orderFilter = '';
+var maxInput = document.getElementById('max')
+var minInput = document.getElementById('min')
+var SearchBtn = document.getElementById('search')
 
+var nameFilter = ''
+var orderFilter = ''
+var minFilter = ''
+var maxFilter = ''
 const table = new DataTable('#example', {
     ajax: {
         url: './data.json',
@@ -58,3 +63,8 @@ orderInput.addEventListener('keyup', function () {
     orderFilter = this.value;
     table.ajax.reload();
 });
+
+
+SearchBtn.addEventListener('click', () => {
+
+})
