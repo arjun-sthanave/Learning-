@@ -2,13 +2,15 @@ var nameInput = document.getElementById('name');
 var orderInput = document.getElementById('order');
 
 var maxInput = document.getElementById('max')
+console.log('max', maxInput);
+
 var minInput = document.getElementById('min')
 var SearchBtn = document.getElementById('search')
 
 var nameFilter = ''
 var orderFilter = ''
-var minFilter = ''
-var maxFilter = ''
+var minFilter
+var maxFilter
 const table = new DataTable('#example', {
     ajax: {
         url: './data.json',
@@ -35,6 +37,13 @@ const table = new DataTable('#example', {
                     );
                 }
 
+                if (maxFilter || minFilter) {
+
+
+                    filteredData = filteredData.filter(item => minFilter <= parseFloat(item.total) && parseFloat(item.total) <= maxFilter);
+                    console.log("filter", filteredData);
+
+                }
                 return filteredData;
             }
     },
@@ -66,5 +75,11 @@ orderInput.addEventListener('keyup', function () {
 
 
 SearchBtn.addEventListener('click', () => {
+    minFilter = minInput.value
+    console.log("min", minFilter);
+
+    maxFilter = maxInput.value
+    console.log("max", maxFilter);
+    table.ajax.reload();
 
 })
