@@ -1,5 +1,6 @@
 var nameInput = document.getElementById('name');
 var orderInput = document.getElementById('order');
+var productInput = document.getElementById('product');
 var StatusBtn = document.getElementById('status')
 var maxInput = document.getElementById('max')
 console.log('max', maxInput);
@@ -10,6 +11,7 @@ var SearchBtn = document.getElementById('search')
 var nameFilter = ''
 var orderFilter = ''
 var statusFilter = ''
+var productFilter = ''
 var minFilter
 var maxFilter
 
@@ -31,12 +33,21 @@ const table = new DataTable('#example', {
                             .includes(nameFilter.toLowerCase())
                     );
                 }
+                if (productFilter) {
+                    filteredData = filteredData.filter(item =>
+                        item.carts.map(items => items.product_name.includes(productFilter))
+
+
+                    );
+
+
+                }
 
                 if (orderFilter) {
                     filteredData = filteredData.filter(item =>
                         item.order_number
-                            .toString()
-                            .includes(orderFilter)
+                            .toString().toLowerCase()
+                            .includes(orderFilter.toLowerCase())
                     );
                 }
 
@@ -76,10 +87,7 @@ const table = new DataTable('#example', {
 
 
             render: function (data, type, row, meta) {
-                console.log("data", data);
-                console.log("type", type);
-                console.log("row", row);
-                console.log("meta", meta);
+
 
                 return meta.settings._iDisplayStart + meta.row + 1;
             }
@@ -110,6 +118,11 @@ orderInput.addEventListener('keyup', function () {
     table.ajax.reload();
 });
 
+productInput.addEventListener('keyup', function () {
+    productFilter = this.value;
+    table.ajax.reload();
+});
+
 
 SearchBtn.addEventListener('click', () => {
     minFilter = minInput.value
@@ -128,32 +141,37 @@ StatusBtn.addEventListener('click', () => {
 
 
 function format(d) {
-    // `d` is the original data object for the row
-    return (
-        '<dl>' +
-        '<dt>Full name:</dt>' +
-        '<dd>' +
-        d.name +
-        '</dd>' +
-        '<dt>Extension number:</dt>' +
-        '<dd>' +
-        d.extn +
-        '</dd>' +
-        '<dt>Extra info:</dt>' +
-        '<dd>And any further details here (images etc)...</dd>' +
-        '</dl>'
-    );
+    console.log("d", d);
+
+
+    let loop = d.carts.map((item, index) => {
+        return `
+     
+<div class="w-1/4 flex rounded overflow-hidden shadow-lg bg-white m-4"> 
+      <img class="w-1/2 h-48 object-cover" src="${item.product_image}" alt="${item.product_name}"> 
+      <div class="px-3 py-2"> 
+        <div class="font-semibold text-md mb-2">${item.product_name}</div> 
+        <p class="text-gray-700 text-base"> Price: $${item.product_price} </p> 
+        <p class="text-gray-500 text-sm mt-1"> quantity: ${item.product_quantity} </p> 
+      </div> 
+    </div>
+       
+    
+    `
+    }).join('');
+    return `<div class="w-full flex ">${loop}</div>`;
+
 }
 table.on('click', 'tbody td.dt-control', function (e) {
     let tr = e.target.closest('tr');
     let row = table.row(tr);
 
     if (row.child.isShown()) {
-        // This row is already open - close it
+
         row.child.hide();
     }
     else {
-        // Open this row
+
         row.child(format(row.data())).show();
     }
 });
