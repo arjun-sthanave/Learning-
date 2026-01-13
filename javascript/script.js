@@ -21,29 +21,60 @@
 
 var data = JSON.parse(localStorage.getItem('userData')) || [];
 const tableBody = document.querySelector('#table');
-
+// 1. Updated render function with onclick event for the row
 function renderTable() {
-    tableBody.innerHTML = data.map((items, index) => `
-        <tr class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default max-w-[100px]">
+    const tableBody = document.getElementById('table');
+    tableBody.innerHTML = data.map((item, index) => `
+        <tr onclick="showRowDetails(${index})" 
+            class="cursor-pointer hover:bg-gray-100 odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default">
             <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-wrap align-top">${index + 1}</th>
-            <td class="px-6 py-4 border p-2 break-words align-top text-wrap">${items.title}</td>
-            <td class="px-6 py-4 border p-2 break-words text-wrap align-top ">${items.description}</td>
-            <td class="px-6 py-4 align-top ">
-            <div class="flex gap-4 items-center">
-                <input data-id="${index}" ${items.isChecked ? 'checked' : ''} type="checkbox" onclick="toggleCheck(this)">
-                <i class="fa fa-trash cursor-pointer " style="color:red" data-user="${index}" onclick="deleteItem(this)"></i>
-            </div>
+            <td class="px-6 py-4 border p-2 break-words align-top text-wrap">${item.title}</td>
+            <td class="px-6 py-4 border p-2 break-words text-wrap align-top">${item.description}</td>
+            <td class="px-6 py-4 align-top">
+                <div class="flex gap-4 items-center" onclick="event.stopPropagation()">
+                    <input data-id="${index}" ${item.isChecked ? 'checked' : ''} type="checkbox" onclick="toggleCheck(this)">
+                    <i class="fa fa-trash cursor-pointer" style="color:red" onclick="deleteItem(this)"></i>
+                </div>
             </td>
-            <td class="px-6 py-4 align-top ">
-          <div class="flex gap-4 items-center"> 
-    
-             <i class="fa fa-pencil-square-o cursor-pointer" data-item=${items} data-id=${index}  onclick="changeData(this)" aria-hidden="true"></i>
-        
-</div>
+            <td class="px-6 py-4 align-top">
+                <div class="flex gap-4 items-center" onclick="event.stopPropagation()">
+                    <i class="fa fa-pencil-square-o cursor-pointer" onclick="changeData(this)" data-id="${index}"></i>
+                </div>
             </td>
         </tr>
     `).join('');
 }
+
+var closeBtn = document.getElementById("closeBtn")
+closeBtn.addEventListener('click', () => {
+    close()
+})
+
+function close() {
+    console.log("closed");
+
+    document.getElementById('detailsModal').style.display = 'none'
+}
+
+function showRowDetails(index) {
+    document.getElementById('detailsModal').style.display = 'block'
+    const item = data[index];
+    const modalBody = document.querySelector('#detailsModal .p-6');
+
+
+    modalBody.innerHTML = `
+        <div class="space-y-2">
+            <p><strong>Title:</strong> ${item.title}</p>
+            
+        </div>
+    `;
+
+
+    const modalElement = document.getElementById('detailsModal');
+    modalElement.classList.remove('hidden');
+    modalElement.classList.add('flex');
+}
+
 
 renderTable();
 
@@ -317,3 +348,13 @@ resetbtn.addEventListener('click', () => {
 
 const trash = document.getElementById('trash')
 trash.style.display = "none"
+
+
+
+const tableContent = document.querySelector('#tableContent');
+
+
+
+
+
+

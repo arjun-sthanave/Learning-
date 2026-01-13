@@ -34,12 +34,14 @@ const table = new DataTable('#example', {
                     );
                 }
                 if (productFilter) {
+                    console.log("product:", productFilter);
+
                     filteredData = filteredData.filter(item =>
-                        item.carts.map(items => items.product_name.includes(productFilter))
+                        item.carts.every(items => items.product_name.toLowerCase().includes(productFilter.toLowerCase()))
 
 
                     );
-
+                    console.log("filterdata:", filteredData);
 
                 }
 
