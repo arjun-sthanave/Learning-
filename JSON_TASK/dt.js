@@ -37,7 +37,7 @@ const table = new DataTable('#example', {
                     console.log("product:", productFilter);
 
                     filteredData = filteredData.filter(item =>
-                        item.carts.every(items => items.product_name.toLowerCase().includes(productFilter.toLowerCase()))
+                        item.carts.some(items => items.product_name.toLowerCase().includes(productFilter.toLowerCase()))
 
 
                     );
