@@ -108,28 +108,20 @@ function showRowDetails(e) {
             </tr>
         </thead>
         <tbody> 
-           ${taskLogs.map((item) =>
+  ${taskLogs
+            .filter((item) => item.taskId === idx)
+            .map((item) =>
+                item.timelogs.map((items) => `
+        <tr class="bg-neutral-primary"> 
+          <td class="px-6 py-4"> ${items.startTime} </td> 
+          <td class="px-6 py-4"> ${items.endTime} </td> 
+          <td class="px-6 py-4"> ${items.duration} </td> 
+        </tr>`
+                ).join('')
+            ).join('')
+        } 
+</tbody>
 
-
-        item.timelogs.map((items) =>
-
-            `       <tr class="bg-neutral-primary">
-                
-                <td class="px-6 py-4">
-                    ${items.startTime}
-                </td>
-                <td class="px-6 py-4">
-                    ${items.endTime}
-                </td>
-                <td class="px-6 py-4">
-                   ${items.duration}
-                </td>
-               
-            </tr>`
-        ).join('')
-    ).join('')
-        }
-        </tbody>
     </table>
 </div>
 
