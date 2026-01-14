@@ -79,7 +79,15 @@ function showRowDetails(e) {
             seconds.toString().padStart(2, '0')
         ].join(':');
     }
-
+    const options = {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
 
 
     const isRunning = !!data[idx].StartTIME;
@@ -110,8 +118,8 @@ function showRowDetails(e) {
                         ${taskLogs.filter(item => item.taskId === idx).map(item =>
         item.timelogs.map(log => `
                                 <tr class="bg-neutral-primary">
-                                    <td class="px-6 py-4">${log.startTime}</td>
-                                    <td class="px-6 py-4">${log.endTime}</td>
+                                    <td class="px-6 py-4">${log.startTime.toLocaleString('en-GB', options)}</td>
+                                    <td class="px-6 py-4">${log.endTime.toLocaleString('en-GB', options)}</td>
                                     <td class="px-6 py-4">${msToTime(log.duration)}</td>
                                 </tr>`).join('')
     ).join('')}
@@ -258,6 +266,9 @@ function deleteItem(e) {
             console.log("data:", data);
             data.splice(e.getAttribute('data-user'), 1)
             localStorage.setItem('userData', JSON.stringify(data));
+            taskLogs.splice(e.getAttribute('data-user'), 1)
+            localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
+
             renderTable();
             Swal.fire({
                 title: "Deleted!",
