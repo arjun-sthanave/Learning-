@@ -68,6 +68,19 @@ function showRowDetails(e) {
     const modalBody = modal.querySelector('.p-6');
     modal.style.display = 'block';
 
+    function msToTime(ms) {
+        const hours = Math.floor(ms / 3600000);
+        const minutes = Math.floor((ms % 3600000) / 60000);
+        const seconds = Math.floor((ms % 60000) / 1000);
+
+        return [
+            hours.toString().padStart(2, '0'),
+            minutes.toString().padStart(2, '0'),
+            seconds.toString().padStart(2, '0')
+        ].join(':');
+    }
+
+
 
     const isRunning = !!data[idx].StartTIME;
 
@@ -99,7 +112,7 @@ function showRowDetails(e) {
                                 <tr class="bg-neutral-primary">
                                     <td class="px-6 py-4">${log.startTime}</td>
                                     <td class="px-6 py-4">${log.endTime}</td>
-                                    <td class="px-6 py-4">${typeof formatMilliseconds === 'function' ? formatMilliseconds(log.duration) : log.duration}</td>
+                                    <td class="px-6 py-4">${msToTime(log.duration)}</td>
                                 </tr>`).join('')
     ).join('')}
                     </tbody>
@@ -116,10 +129,11 @@ function showRowDetails(e) {
         if (!data[idx].StartTIME) return;
 
         const startTime = new Date(data[idx].StartTIME);
+        console.log("starttime", startTime);
+
         const now = new Date();
         const diff = Math.floor((now - startTime) / 1000);
 
-        if (diff < 0) return;
 
         const h = Math.floor(diff / 3600).toString().padStart(2, '0');
         const m = Math.floor((diff % 3600) / 60).toString().padStart(2, '0');
@@ -138,6 +152,7 @@ function showRowDetails(e) {
     startbtn.onclick = () => {
 
         data[idx].StartTIME = new Date();
+        localStorage.setItem('userData', JSON.stringify(data));
         activeTimerId = idx;
 
         startbtn.classList.add('hidden');
@@ -162,6 +177,11 @@ function showRowDetails(e) {
         const taskIndex = taskLogs.findIndex(item => item.taskId === idx);
         if (taskIndex !== -1) {
             taskLogs[taskIndex].timelogs.push(newLogEntry);
+
+            localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
+            data[idx].StartTIME = ""
+            localStorage.setItem('userData', JSON.stringify(data));
+
         } else {
             taskLogs.push({ taskId: idx, timelogs: [newLogEntry] });
         }
@@ -430,6 +450,7 @@ removeallData.addEventListener("click", () => {
             });
             localStorage.clear()
             data = []
+            taskLogs = []
             renderTable()
             document.getElementById('trash').style.display = "none"
         }
