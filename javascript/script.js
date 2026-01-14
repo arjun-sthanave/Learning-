@@ -59,150 +59,124 @@ function close() {
 }
 
 let currentTimerInterval = null;
+let activeTimerId = null;
+let activeStartTime = null;
 
 function showRowDetails(e) {
-    var d = new Date()
-    if (currentTimerInterval) {
-        clearInterval(currentTimerInterval);
-    }
-
-    var idx = e.getAttribute('data-id')
-    console.log("index", idx);
-
+    var idx = e.getAttribute('data-id');
     const modal = document.getElementById('detailsModal');
     const modalBody = modal.querySelector('.p-6');
-
-
     modal.style.display = 'block';
+
+
+    const isRunning = !!data[idx].StartTIME;
+
     modalBody.innerHTML = `
-  <div class="space-y-4 p-4 border rounded-lg shadow-sm">
-  <div class="space-y-2">
-    <p>Title: <span id="item-title">${data[idx].title}</span></p>
-    <p>Start Time: <span id="timer-display" class=" text-xl">00:00:00</span></p>
-  </div>
-  <div class="flex gap-2">
-    <button id="start-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Start</button>
-    <button id="stop-btn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 hidden">Stop</button>
-  </div>
+    <div class="space-y-4 p-4 border rounded-lg shadow-sm">
+        <div class="space-y-2">
+            <p>Title: <span id="item-title">${data[idx].title}</span></p>
+            <p>Timer: <span id="timer-display" class="text-xl">00:00:00</span></p>
+        </div>
+        <div class="flex gap-2">
+            <button id="start-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ${isRunning ? 'hidden' : ''}">Start</button>
+            <button id="stop-btn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ${isRunning ? '' : 'hidden'}">Stop</button>
+        </div>
 
-  <!-- Time Log Section -->
-  <div class="mt-6 border-t pt-4">
-    <h3 class="font-bold mb-2">Time Logs</h3>
-  
+        <div class="mt-6 border-t pt-4">
+            <h3 class="font-bold mb-2">Time Logs</h3>
+            <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+                <table class="w-full text-sm text-left text-body">
+                    <thead class="text-sm text-body bg-neutral-secondary-soft border-b border-default">
+                        <tr>
+                            <th class="px-6 py-3 font-medium">Start time</th>
+                            <th class="px-6 py-3 font-medium">End time</th>
+                            <th class="px-6 py-3 font-medium">Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${taskLogs.filter(item => item.taskId === idx).map(item =>
+        item.timelogs.map(log => `
+                                <tr class="bg-neutral-primary">
+                                    <td class="px-6 py-4">${log.startTime}</td>
+                                    <td class="px-6 py-4">${log.endTime}</td>
+                                    <td class="px-6 py-4">${typeof formatMilliseconds === 'function' ? formatMilliseconds(log.duration) : log.duration}</td>
+                                </tr>`).join('')
+    ).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>`;
 
-<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-    <table class="w-full text-sm text-left rtl:text-right text-body">
-        <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
-            <tr>
-                
-                <th scope="col" class="px-6 py-3 font-medium">
-                   Start time
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    End time
-                </th>
-                <th scope="col" class="px-6 py-3 font-medium">
-                    Duration
-                </th>
-                
-            </tr>
-        </thead>
-        <tbody> 
-  ${taskLogs
-            .filter((item) => item.taskId === idx)
-            .map((item) =>
-                item.timelogs.map((items) => `
-        <tr class="bg-neutral-primary"> 
-          <td class="px-6 py-4"> ${items.startTime} </td> 
-          <td class="px-6 py-4"> ${items.endTime} </td> 
-          <td class="px-6 py-4"> ${items.duration} </td> 
-        </tr>`
-                ).join('')
-            ).join('')
-        } 
-</tbody>
+    const startbtn = document.getElementById('start-btn');
+    const stopbtn = document.getElementById('stop-btn');
+    const display = document.getElementById('timer-display');
 
-    </table>
-</div>
+    const updateDisplay = () => {
+        if (!data[idx].StartTIME) return;
 
-  </div>
-</div>
+        const startTime = new Date(data[idx].StartTIME);
+        const now = new Date();
+        const diff = Math.floor((now - startTime) / 1000);
 
-`;
-    var startbtn = document.getElementById('start-btn')
-    startbtn.addEventListener('click', () => {
-        var startTimer = new Date()
+        if (diff < 0) return;
+
+        const h = Math.floor(diff / 3600).toString().padStart(2, '0');
+        const m = Math.floor((diff % 3600) / 60).toString().padStart(2, '0');
+        const s = (diff % 60).toString().padStart(2, '0');
+
+        if (display) display.textContent = `${h}:${m}:${s}`;
+    };
 
 
-        var stopbtn = document.getElementById('stop-btn')
-
-        stopbtn.style.display = 'block'
-        startbtn.style.display = 'none'
-
-        let totalSeconds = 0;
-        const display = document.getElementById('timer-display');
-
-
-        currentTimerInterval = setInterval(() => {
-
-
-            totalSeconds++;
-
-            const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
-
-
-            if (display) {
-                display.textContent = `${hours < 10 ? `0${hours}` : hours}:${(minutes < 10 ? `0${minutes}` : minutes)}:${seconds < 10 ? `0${seconds}` : seconds}`;
-            }
-        }, 1000);
-        stopbtn.addEventListener('click', () => {
-
-            const endtime = new Date();
-            const durationMs = endtime - startTimer;
-
-            const newLogEntry = {
-                startTime: startTimer.toLocaleString(),
-                endTime: endtime.toLocaleString(),
-                duration: durationMs
-            };
-            //find index -1 return krta hai jb false hota hai t
-
-            const taskIndex = taskLogs.findIndex(item => item.taskId === idx);
-
-            if (taskIndex !== -1) {
-
-                taskLogs[taskIndex].timelogs.push(newLogEntry);
-                console.log("Updated existing task log", taskLogs[taskIndex]);
-            } else {
-
-                const newTaskEntry = {
-                    taskId: idx,
-                    timelogs: [newLogEntry]
-                };
-                taskLogs.push(newTaskEntry);
-                console.log("Created new task log entry");
-            }
-
-            localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
-
-
-            stopbtn.style.display = 'none';
-            startbtn.style.display = 'block';
-
-            if (typeof showRowDetails === "function") {
-                showRowDetails(e);
-            }
-
-            clearInterval(currentTimerInterval);
-        });
-
+    if (isRunning) {
+        if (currentTimerInterval) clearInterval(currentTimerInterval);
+        currentTimerInterval = setInterval(updateDisplay, 1000);
+        updateDisplay();
     }
 
+    startbtn.onclick = () => {
 
-    )
+        data[idx].StartTIME = new Date();
+        activeTimerId = idx;
+
+        startbtn.classList.add('hidden');
+        stopbtn.classList.remove('hidden');
+
+        if (currentTimerInterval) clearInterval(currentTimerInterval);
+        currentTimerInterval = setInterval(updateDisplay, 1000);
+        updateDisplay();
+    };
+
+    stopbtn.onclick = () => {
+        const endtime = new Date();
+        const startTime = new Date(data[idx].StartTIME);
+        const durationMs = endtime - startTime;
+
+        const newLogEntry = {
+            startTime: startTime.toLocaleString(),
+            endTime: endtime.toLocaleString(),
+            duration: durationMs
+        };
+
+        const taskIndex = taskLogs.findIndex(item => item.taskId === idx);
+        if (taskIndex !== -1) {
+            taskLogs[taskIndex].timelogs.push(newLogEntry);
+        } else {
+            taskLogs.push({ taskId: idx, timelogs: [newLogEntry] });
+        }
+
+        localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
+
+
+        clearInterval(currentTimerInterval);
+        data[idx].StartTIME = null;
+        activeTimerId = null;
+
+        showRowDetails(e);
+    };
 }
+
 
 renderTable();
 
@@ -216,7 +190,8 @@ SubBtn.addEventListener('click', (event) => {
         title: formTitle.value,
         description: formDescription.value,
         isChecked: false,
-        isToggle: false
+        isToggle: false,
+        StartTIME: ""
     };
 
     console.log("userData", userData);
