@@ -115,7 +115,7 @@ function showRowDetails(e) {
                         </tr>
                     </thead>
                     <tbody>
-                        ${taskLogs.filter(item => item.taskId === idx).map(item =>
+                        ${taskLogs.filter(item => item.taskId === data[idx].id).map(item =>
         item.timelogs.map(log => `
                                 <tr class="bg-neutral-primary">
                                     <td class="px-6 py-4">${log.startTime.toLocaleString('en-GB', options)}</td>
@@ -161,7 +161,7 @@ function showRowDetails(e) {
 
         data[idx].StartTIME = new Date();
         localStorage.setItem('userData', JSON.stringify(data));
-        activeTimerId = idx;
+        activeTimerId = data[idx].id;
 
         startbtn.classList.add('hidden');
         stopbtn.classList.remove('hidden');
@@ -182,7 +182,7 @@ function showRowDetails(e) {
             duration: durationMs
         };
 
-        const taskIndex = taskLogs.findIndex(item => item.taskId === idx);
+        const taskIndex = taskLogs.findIndex(item => item.taskId === data[idx].id);
         if (taskIndex !== -1) {
             taskLogs[taskIndex].timelogs.push(newLogEntry);
 
@@ -191,7 +191,7 @@ function showRowDetails(e) {
             localStorage.setItem('userData', JSON.stringify(data));
 
         } else {
-            taskLogs.push({ taskId: idx, timelogs: [newLogEntry] });
+            taskLogs.push({ taskId: data[idx].id, timelogs: [newLogEntry] });
         }
 
         localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
@@ -268,6 +268,7 @@ function deleteItem(e) {
             localStorage.setItem('userData', JSON.stringify(data));
             taskLogs.splice(e.getAttribute('data-user'), 1)
             localStorage.setItem('timeLogs', JSON.stringify(taskLogs));
+
 
             renderTable();
             Swal.fire({
